@@ -6,7 +6,6 @@ import type {
   QuizSession,
   QuizStats,
   QuestionStatus,
-  SessionAnswer,
   SubjectProgress,
 } from '@/lib/types/quiz';
 

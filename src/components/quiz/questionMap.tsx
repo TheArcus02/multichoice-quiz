@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { QuestionStatus } from '@/lib/types/quiz';
@@ -38,14 +38,17 @@ export function QuestionMap({
     return pos >= 0 ? Math.floor(pos / PAGE_SIZE) : 0;
   }, [availableIndices, currentIndex]);
 
-  const [manualPage, setManualPage] = useState<number | null>(null);
+  // Manual page override is tied to the currentIndex it was set for.
+  // When currentIndex changes (e.g. random Next), the override is automatically ignored.
+  const [manualOverride, setManualOverride] = useState<{
+    page: number;
+    forIndex: number;
+  } | null>(null);
 
-  // Reset manual override when the current question moves to a different page
-  useEffect(() => {
-    setManualPage(null);
-  }, [currentPageForQuestion]);
-
-  const activePage = manualPage !== null ? manualPage : currentPageForQuestion;
+  const activePage =
+    manualOverride !== null && manualOverride.forIndex === currentIndex
+      ? manualOverride.page
+      : currentPageForQuestion;
 
   const pageItems = useMemo(() => {
     const start = activePage * PAGE_SIZE;
@@ -55,7 +58,7 @@ export function QuestionMap({
   function goPage(dir: -1 | 1) {
     const next = activePage + dir;
     if (next < 0 || next >= totalPages) return;
-    setManualPage(next);
+    setManualOverride({ page: next, forIndex: currentIndex });
   }
 
   return (
