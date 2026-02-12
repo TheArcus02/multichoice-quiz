@@ -1,7 +1,29 @@
-import { ComponentExample } from "@/components/component-example";
+import { useState } from 'react';
+import { SubjectSelector } from '@/components/subjectSelector';
+import { QuizPage } from '@/components/quiz/quizPage';
+import type { QuizConfig } from '@/lib/types/quiz';
+
+type View =
+  | { kind: 'select' }
+  | { kind: 'quiz'; config: QuizConfig };
 
 export function App() {
-return <ComponentExample />;
+  const [view, setView] = useState<View>({ kind: 'select' });
+
+  if (view.kind === 'quiz') {
+    return (
+      <QuizPage
+        config={view.config}
+        onFinish={() => setView({ kind: 'select' })}
+      />
+    );
+  }
+
+  return (
+    <SubjectSelector
+      onStart={(config) => setView({ kind: 'quiz', config })}
+    />
+  );
 }
 
 export default App;
