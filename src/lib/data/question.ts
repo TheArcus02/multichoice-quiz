@@ -1538,9 +1538,9 @@ export const questions = [
     text: '90. Separację środowiska wykonania poprzez wirtualizację (jądra) systemu operacyjnego oferuje:',
     answers: [
       { text: 'Trusted Execution Environment (TEE)', correct: false },
-      { text: 'funkcja systemowa chroot()', correct: true },
+      { text: 'funkcja systemowa chroot()', correct: false },
       { text: 'Address Space Layout Randomization (ASLR)', correct: false },
-      { text: 'Windows Virtualization-Based Security (VBS)', correct: false },
+      { text: 'Windows Virtualization-Based Security (VBS)', correct: true },
     ],
   },
   {
@@ -1832,7 +1832,7 @@ export const questions = [
       { text: 'jest realizacją koncepcji AAA', correct: true },
       {
         text: 'pozwala na centralizację zarządzania danymi, które dystrybuuje',
-        correct: false,
+        correct: true,
       },
       { text: 'wspomaga uwierzytelnianie', correct: true },
       { text: 'pracuje w architekturze klient-serwer', correct: true },
@@ -6885,6 +6885,94 @@ export const questions = [
       { text: 'ARP (Address Resolution Protocol)', correct: true },
       { text: 'STP (Spanning Tree Protocol)', correct: true },
       { text: 'rlogin (Remote Login)', correct: false },
+    ],
+  },
+  {
+    'text': '425. Funkcja systemowa chroot()',
+    'answers': [
+      {
+        'text': 'nie oferuje kontroli nad komunikacją sieciową',
+        'correct': true,
+      },
+      {
+        'text':
+          'służy do chwilowego przeniesienia uprawnień administratora na wybranego użytkownika',
+        'correct': false,
+      },
+      {
+        'text': 'chroni system przed atakami DoS',
+        'correct': false,
+      },
+      {
+        'text': 'jest jednym z mechanizmów tworzenia piaskownicy',
+        'correct': true,
+      },
+    ],
+  },
+  {
+    'text':
+      '426. Wskaż mechanizmy wykorzystywane do realizacji kontroli dostępu w systemie plików:',
+    'answers': [
+      {
+        'text': 'Trustees',
+        'correct': true,
+      },
+      {
+        'text': 'SSO',
+        'correct': false,
+      },
+      {
+        'text': 'ACL',
+        'correct': true,
+      },
+      {
+        'text': 'NTLM',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      '427. Wskaż mechanizmy wykorzystywane w systemie Windows do ochrony haseł użytkowników:',
+    'answers': [
+      {
+        'text': 'Access Control Lists',
+        'correct': false,
+      },
+      {
+        'text': 'Virtualization-Based Security',
+        'correct': true,
+      },
+      {
+        'text': 'Encrypted File System',
+        'correct': false,
+      },
+      {
+        'text': 'Pass the Hash',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      '8. Mechanizm filtrów eBPF umożliwia wykonanie na odebranym datagramie IP wykonanie następujących operacji zanim pakiet zostanie dostarczony do jądra systemu operacyjnego:',
+    'answers': [
+      {
+        'text': 'odrzucenie datagramu',
+        'correct': true,
+      },
+      {
+        'text': 'zmodyfikowanie nagłówka datagramu',
+        'correct': true,
+      },
+      {
+        'text': 'zmodyfikowanie treści datagramu',
+        'correct': true,
+      },
+      {
+        'text': 'przesłanie datagramu do innego komputera',
+        'correct': true,
+      },
     ],
   },
 ];
