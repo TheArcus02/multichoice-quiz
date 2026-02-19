@@ -72,22 +72,16 @@ export function useQuizSession(config: QuizConfig) {
       indices = subject.questions.map((_, i) => i);
     }
 
-    const restoredAnswers = Object.fromEntries(
-      indices
-        .map((idx) => {
-          const saved = progress.answers[idx];
-          if (!saved) return null;
-          return [
-            idx,
-            {
-              selectedAnswers: saved.selectedAnswers,
-              submitted: true,
-              isCorrect: saved.isCorrect,
-            },
-          ] as const;
-        })
-        .filter((entry): entry is readonly [number, QuizSession['answers'][number]] => !!entry),
-    );
+    const restoredAnswers: QuizSession['answers'] = {};
+    for (const idx of indices) {
+      const saved = progress.answers[idx];
+      if (!saved) continue;
+      restoredAnswers[idx] = {
+        selectedAnswers: saved.selectedAnswers,
+        submitted: true,
+        isCorrect: saved.isCorrect,
+      };
+    }
 
     const unanswered = indices.filter((idx) => !progress.answers[idx]);
     // Pick a random first question, prefer unanswered
