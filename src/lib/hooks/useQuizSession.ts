@@ -67,20 +67,13 @@ export function useQuizSession(config: QuizConfig) {
 
     let indices: number[];
     if (config.mode === 'incorrectOnly') {
-      indices = [...progress.incorrectIndices].sort((a, b) => a - b);
+      const unansweredIndices = subject.questions
+        .map((_, i) => i)
+        .filter((i) => !progress.answers[i]);
+      const combined = new Set([...progress.incorrectIndices, ...unansweredIndices]);
+      indices = [...combined].sort((a, b) => a - b);
     } else {
       indices = subject.questions.map((_, i) => i);
-    }
-
-    const restoredAnswers: QuizSession['answers'] = {};
-    for (const idx of indices) {
-      const saved = progress.answers[idx];
-      if (!saved) continue;
-      restoredAnswers[idx] = {
-        selectedAnswers: saved.selectedAnswers,
-        submitted: true,
-        isCorrect: saved.isCorrect,
-      };
     }
 
     const unanswered = indices.filter((idx) => !progress.answers[idx]);
@@ -98,7 +91,7 @@ export function useQuizSession(config: QuizConfig) {
       availableIndices: indices,
       currentIndex: firstIndex,
       history: [],
-      answers: restoredAnswers,
+      answers: {},
     };
   });
 
@@ -132,10 +125,25 @@ export function useQuizSession(config: QuizConfig) {
   }, [session, subject]);
 
   const stats: QuizStats = useMemo(() => {
-    const answered = Object.values(session.answers).filter((a) => a.submitted).length;
-    const correct = Object.values(session.answers).filter(
-      (a) => a.submitted && a.isCorrect,
-    ).length;
+    const progress = loadProgress(session.subjectName);
+    let answered = 0;
+    let correct = 0;
+
+    for (const idx of session.availableIndices) {
+      const sessionAnswer = session.answers[idx];
+      if (sessionAnswer?.submitted) {
+        answered += 1;
+        if (sessionAnswer.isCorrect) correct += 1;
+        continue;
+      }
+
+      const saved = progress.answers[idx];
+      if (saved) {
+        answered += 1;
+        if (saved.isCorrect) correct += 1;
+      }
+    }
+
     return {
       total: session.availableIndices.length,
       answered,
@@ -146,16 +154,23 @@ export function useQuizSession(config: QuizConfig) {
 
   /** Status map keyed by original question index */
   const questionStatusMap: Record<number, QuestionStatus> = useMemo(() => {
+    const progress = loadProgress(session.subjectName);
     const map: Record<number, QuestionStatus> = {};
     for (const idx of session.availableIndices) {
       if (idx === session.currentIndex) {
         map[idx] = 'current';
       } else {
-        const ans = session.answers[idx];
-        if (!ans?.submitted) {
-          map[idx] = 'unanswered';
+        const sessionAnswer = session.answers[idx];
+        if (sessionAnswer?.submitted) {
+          map[idx] = sessionAnswer.isCorrect ? 'correct' : 'incorrect';
+          continue;
+        }
+
+        const saved = progress.answers[idx];
+        if (saved) {
+          map[idx] = saved.isCorrect ? 'correct' : 'incorrect';
         } else {
-          map[idx] = ans.isCorrect ? 'correct' : 'incorrect';
+          map[idx] = 'unanswered';
         }
       }
     }
