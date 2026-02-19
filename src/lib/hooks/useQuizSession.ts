@@ -72,8 +72,31 @@ export function useQuizSession(config: QuizConfig) {
       indices = subject.questions.map((_, i) => i);
     }
 
-    // Pick a random first question
-    const firstIndex = indices.length > 0 ? pickRandom(indices) : -1;
+    const restoredAnswers = Object.fromEntries(
+      indices
+        .map((idx) => {
+          const saved = progress.answers[idx];
+          if (!saved) return null;
+          return [
+            idx,
+            {
+              selectedAnswers: saved.selectedAnswers,
+              submitted: true,
+              isCorrect: saved.isCorrect,
+            },
+          ] as const;
+        })
+        .filter((entry): entry is readonly [number, QuizSession['answers'][number]] => !!entry),
+    );
+
+    const unanswered = indices.filter((idx) => !progress.answers[idx]);
+    // Pick a random first question, prefer unanswered
+    const firstIndex =
+      unanswered.length > 0
+        ? pickRandom(unanswered)
+        : indices.length > 0
+          ? pickRandom(indices)
+          : -1;
 
     return {
       subjectName: config.subjectName,
@@ -81,7 +104,7 @@ export function useQuizSession(config: QuizConfig) {
       availableIndices: indices,
       currentIndex: firstIndex,
       history: [],
-      answers: {},
+      answers: restoredAnswers,
     };
   });
 

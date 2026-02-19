@@ -310,7 +310,7 @@ export const questions = [
       },
       {
         text: 'filtruje pakiety na poziomie wszystkich 3 warstw: sieciowej, transportowej i aplikacyjnej',
-        correct: true,
+        correct: false,
       },
     ],
   },
@@ -1170,7 +1170,7 @@ export const questions = [
     answers: [
       {
         text: 'najpierw hosts.allow, potem hosts.deny, do odnalezienia pasującej reguły',
-        correct: true,
+        correct: false,
       },
       {
         text: 'sprawdzane są wszystkie reguły i jeżeli żadna z nich nie kończy się DENY, przyznawany jest dostęp',
@@ -1178,7 +1178,7 @@ export const questions = [
       },
       {
         text: 'najpierw hosts.deny, potem hosts.allow, do odnalezienia pierwszej pasującej reguły',
-        correct: false,
+        correct: true,
       },
       {
         text: 'sprawdzane są wszystkie reguły i jeżeli żadna z nich nie kończy się DENY, a chociaż jedna kończy się ALLOW, przyznawany jest dostęp',
@@ -6972,6 +6972,534 @@ export const questions = [
       {
         'text': 'przesłanie datagramu do innego komputera',
         'correct': true,
+      },
+    ],
+  },
+
+  {
+    'text':
+      'Plik użytkownika systemu Windows, który został zwirtualizowany mechanizmem UAC, jest widoczny w postaci zwirtualizowanej:',
+    'answers': [
+      {
+        'text': 'dla wszystkich zwirtualizowanych aplikacji w systemie',
+        'correct': false,
+      },
+      {
+        'text': 'dla wszystkich zwirtualizowanych aplikacji tego użytkownika',
+        'correct': true,
+      },
+      {
+        'text':
+          'dla wszystkich aplikacji pracujących aktualnie na tym samym poziomie integralności',
+        'correct': false,
+      },
+      {
+        'text': 'tylko dla aplikacji która go utworzyła',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Które stwierdzenia są prawdziwe w odniesieniu do wirtualizacji UAC systemu plików w systemie Windows:',
+    'answers': [
+      {
+        'text':
+          'każdy zwirtualizowany proces, którego uprawnienia nie pozwalają na dostęp do danego katalogu, otrzyma własną kopię katalogu',
+        'correct': false,
+      },
+      {
+        'text':
+          'zmiany dla katalogów objętych wirtualizacją są zatwierdzane i wprowadzane do oryginałów każdorazowo po zakończeniu zwirtualizowanego procesu, na zasadzie "ostatni zapis wygrywa"',
+        'correct': false,
+      },
+      {
+        'text':
+          'wszystkie zwirtualizowane procesy tego samego użytkownika współdzielą ten sam obraz zwirtualizowanego katalogu',
+        'correct': true,
+      },
+      {
+        'text':
+          'dla katalogów, dla których włączono wirtualizację, każdy proces niezależnie od poziomu integralności otrzyma własną kopię katalogu',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Wskaż mechanizmy wykorzystywane w systemie Windows do ochrony haseł użytkowników:',
+    'answers': [
+      {
+        'text': 'Access Control Lists',
+        'correct': false,
+      },
+      {
+        'text': 'Virtualization-Based Security',
+        'correct': true,
+      },
+      {
+        'text': 'Encrypted File System',
+        'correct': false,
+      },
+      {
+        'text': 'Pass the Hash',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Grupa użytkowników systemie MS Windows o nazwie Użytkownicy uwierzytelnieni:',
+    'answers': [
+      {
+        'text': 'jest identyczna z grupą Wszyscy',
+        'correct': false,
+      },
+      {
+        'text': 'obejmuje wszystkich użytkowników lokalnych',
+        'correct': false,
+      },
+      {
+        'text': 'nie obejmuje konta Gość',
+        'correct': true,
+      },
+      {
+        'text': 'jest podzbiorem grupy Wszyscy',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Użytkownik U systemu MS Windows należący do grupy G1 oraz G2 uzyskał jawnie do zasobu O w systemie plików NTFS prawo A, B oraz C. Grupie G1 na liście ACL zasobu O nadano prawo A i D, lecz odmówiono prawa B, natomiast grupa G2 dziedziczy z obiektu nadrzędnego względem O prawo B, C oraz E. Jakie czynne uprawnienia do O posiada U?',
+    'answers': [
+      {
+        'text': 'tylko A B C',
+        'correct': false,
+      },
+      {
+        'text': 'tylko A C D',
+        'correct': false,
+      },
+      {
+        'text': 'tylko A C D E',
+        'correct': true,
+      },
+      {
+        'text': 'A B C D E',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text': 'Uprawnienia domyślne POSIX ACL oznaczają:',
+    'answers': [
+      {
+        'text':
+          'uprawnienia nadawane nowym elementom utworzonym w danym katalogu',
+        'correct': true,
+      },
+      {
+        'text':
+          'minimalne uprawnienia do danego obiektu dla wszystkich użytkowników',
+        'correct': false,
+      },
+      {
+        'text': 'uprawnienia obowiązujące użytkowników spoza listy ACL',
+        'correct': false,
+      },
+      {
+        'text': 'uprawnienia ustawiane po wyczyszczeniu listy ACL (setfacl -b)',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'W przypadku systemu kontroli ACL standardu POSIX użytkownik U należący do grupy G posiada efektywne uprawnienie r do zasobu p jeśli:',
+    'answers': [
+      {
+        'text':
+          'właściciel p ma prawo r oraz p posiada ustawiony bit suid - bez względu na zawartość ACL',
+        'correct': false,
+      },
+      {
+        'text': 'prawo r zostanie jawnie nadane U lub G',
+        'correct': true,
+      },
+      {
+        'text':
+          'U oraz G występują na liście ACL bez prawa r, ale kategoria "wszyscy użytkownicy" (others) takie uprawnienie posiada',
+        'correct': false,
+      },
+      {
+        'text': 'U jest właścicielem p - bez względu na zawartość ACL',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text': 'Flaga suid wg standardu POSIX 1003.1:',
+    'answers': [
+      {
+        'text':
+          'oznacza przejęcie przez proces uprawnień właściciela pliku, z którego proces został uruchomiony',
+        'correct': true,
+      },
+      {
+        'text':
+          'oznacza że usunięcie i zmiana nazwy pliku są możliwe tylko przez właściciela samego pliku (lub właściciela katalogu)',
+        'correct': false,
+      },
+      {
+        'text': 'może być nadawana dla plików wykonywalnych',
+        'correct': false,
+      },
+      {
+        'text': 'ma sens tylko w przypadku katalogów',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Wskaż mechanizmy wykorzystywane do realizacji kontroli dostępu w systemie plików:',
+    'answers': [
+      {
+        'text': 'Trustees',
+        'correct': false,
+      },
+      {
+        'text': 'SSO',
+        'correct': false,
+      },
+      {
+        'text': 'ACL',
+        'correct': true,
+      },
+      {
+        'text': 'NTLM',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Jeśli w systemie zostanie wykonana komenda: iptables -A INPUT -p tcp --dport ssh -j DROP -s 222.22.22.0/24 to (wyłącznie na jej podstawie) można stwierdzić iż:',
+    'answers': [
+      {
+        'text': 'tylko połączenia SSH z sieci 222.22.22.0/24 będą dopuszczone',
+        'correct': false,
+      },
+      {
+        'text':
+          'z każdego zdalnego komputera można będzie się zalogować w tym systemie przez SSH',
+        'correct': false,
+      },
+      {
+        'text': 'połączenia SSH z sieci 222.22.22.0/24 będą odrzucane',
+        'correct': true,
+      },
+      {
+        'text':
+          'cała komunikacja SSH niezależnie od adresu źródłowego będzie odrzucana',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Jak iptables umożliwia wprowadzenie zasady domyślnej odmowy dostępu?',
+    'answers': [
+      {
+        'text': 'umożliwia globalnie dla całej zapory opcją -D (default) DROP',
+        'correct': false,
+      },
+      {
+        'text': 'nie umożliwia',
+        'correct': false,
+      },
+      {
+        'text':
+          'poprzez prowadzenie odpowiedniej pierwszej reguły w łańcuchu pasującej do każdego pakietu z opcją -P REJECT',
+        'correct': false,
+      },
+      {
+        'text':
+          'dla konkretnego łańcucha reguł umożliwia prowadzenie polityki DROP',
+        'correct': true,
+      },
+    ],
+  },
+  {
+    'text':
+      'Czy iptables umożliwia ograniczenie dostępu do pojedynczej usługi?',
+    'answers': [
+      {
+        'text':
+          'nie, sieciowa zapora operuje na pakietach i nie rozróżnia poszczególnych usług',
+        'correct': false,
+      },
+      {
+        'text': 'tak, jeśli w regule określimy konkretny protokół',
+        'correct': false,
+      },
+      {
+        'text':
+          'nie, jeśli w regule określimy konkretny protokół (wówczas reguła dotyczy wszystkich usług wykorzystujących ten protokół)',
+        'correct': false,
+      },
+      {
+        'text': 'tak, poprzez wyspecyfikowanie konkretnego portu',
+        'correct': true,
+      },
+    ],
+  },
+  {
+    'text': 'Połączenie VPN w systemie MS Windows:',
+    'answers': [
+      {
+        'text': 'może wykorzystywać protokół SMB',
+        'correct': false,
+      },
+      {
+        'text': 'można skonfigurować w lokalnej polityce bezpieczeństwa',
+        'correct': false,
+      },
+      {
+        'text': 'można skonfigurować w zaporze sieciowej',
+        'correct': false,
+      },
+      {
+        'text': 'może wykorzystywać protokół IPsec',
+        'correct': true,
+      },
+    ],
+  },
+  {
+    'text': 'OpenVPN to:',
+    'answers': [
+      {
+        'text': 'moduł serwera HTTP szyfrujący połączenia z klientami',
+        'correct': false,
+      },
+      {
+        'text':
+          'sieć VPN o architekturze klient-serwer wykorzystująca kryptosystem OpenSSL i wirtualne interfejsy sieciowe',
+        'correct': true,
+      },
+      {
+        'text': 'tunel VPN, który nie wymaga uwierzytelniania stron tunelu',
+        'correct': false,
+      },
+      {
+        'text': 'realizacja sieci VPN w oparciu o protokół TLS',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text': 'W przypadku użycia IPsec w systemie Windows:',
+    'answers': [
+      {
+        'text':
+          'AH nie jest wykorzystywany ani w domyślnych ustawieniach zapory, ani polityki IPsec',
+        'correct': false,
+      },
+      {
+        'text':
+          'reguły IPsec zdefiniowane w zaporze domyślnie odrzucają cały ruch przychodzący',
+        'correct': false,
+      },
+      {
+        'text':
+          'reguły IPsec zdefiniowane w zaporze nie szyfrują domyślnie ruchu',
+        'correct': true,
+      },
+      {
+        'text':
+          'reguły IPsec zdefiniowane w zaporze domyślnie wykorzystują tylko protokół AH',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Które konfiguracje protokołu IPsec są aktualnie obsługiwane w systemie Windows?',
+    'answers': [
+      {
+        'text': 'szyfrowanie ESP i podpis AH',
+        'correct': true,
+      },
+      {
+        'text': 'tryb transportowy i tunelowy z ESP',
+        'correct': false,
+      },
+      {
+        'text': 'tylko AH, bez ESP',
+        'correct': false,
+      },
+      {
+        'text': 'szyfrowanie i podpis ESP, bez AH',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text': 'Użycie IPsec wraz z IKE wprost chroni przed atakiem:',
+    'answers': [
+      {
+        'text': 'TCP spoofing',
+        'correct': false,
+      },
+      {
+        'text': 'ARP cache poisoning',
+        'correct': false,
+      },
+      {
+        'text': 'session hijacking',
+        'correct': true,
+      },
+      {
+        'text': 'name spoofing',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text': 'Cechą szczególną single-sign-on jest:',
+    'answers': [
+      {
+        'text':
+          'stosowanie tego samego algorytmu kryptograficznego w celu zarówno szyfrowania, jak i uzyskania podpisu cyfrowego',
+        'correct': false,
+      },
+      {
+        'text': 'podpisywanie pakietów za pomocą jednorazowego klucza sesji',
+        'correct': false,
+      },
+      {
+        'text':
+          'minimalizacja liczby oddzielnych uwierzytelnień użytkownika w sieci',
+        'correct': true,
+      },
+      {
+        'text': 'podpisywanie każdego pliku innym kluczem',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Mechanizm filtrów eBPF umożliwia wykonanie na odebranym datagramie IP wykonanie następujących operacji zanim pakiet zostanie dostarczony do jądra systemu operacyjnego:',
+    'answers': [
+      {
+        'text': 'odrzucenie datagramu',
+        'correct': true,
+      },
+      {
+        'text': 'zmodyfikowanie nagłówka datagramu',
+        'correct': false,
+      },
+      {
+        'text': 'zmodyfikowanie treści datagramu',
+        'correct': false,
+      },
+      {
+        'text': 'przesłanie datagramu do innego komputera',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Które stwierdzenia są prawdziwe w odniesieniu do modelu MIC ochrony integralności:',
+    'answers': [
+      {
+        'text':
+          'podmiot nie może modyfikować obiektów o wyższym poziomie integralności',
+        'correct': true,
+      },
+      {
+        'text':
+          'podmiot nie może modyfikować obiektów o niższym poziomie integralności',
+        'correct': false,
+      },
+      {
+        'text':
+          'podmiot bez uprawnień administracyjnych nie może modyfikować żadnych obiektów o zdefiniowanym poziomie integralności',
+        'correct': false,
+      },
+      {
+        'text':
+          'podmiot nie może uruchamiać obiektów o niższym poziomie integralności',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Mechanizm systemów POSIX umożliwiający przydzielenie poszczególnych uprawnień administracyjnych wybranym użytkownikom lub programom to:',
+    'answers': [
+      {
+        'text': 'change root',
+        'correct': false,
+      },
+      {
+        'text': 'capabilities',
+        'correct': true,
+      },
+      {
+        'text': 'sandbox',
+        'correct': false,
+      },
+      {
+        'text': 'switch root',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Które z poniższych protokołów realizują kryptograficzne tunele wirtualne z ochroną integralności:',
+    'answers': [
+      {
+        'text': 'AH',
+        'correct': true,
+      },
+      {
+        'text': 'ESP',
+        'correct': false,
+      },
+      {
+        'text': 'S/MIME',
+        'correct': false,
+      },
+      {
+        'text': 'TLS',
+        'correct': false,
+      },
+    ],
+  },
+  {
+    'text':
+      'Które z poniższych protokołów realizują kryptograficzne tunele wirtualne z ochroną poufności:',
+    'answers': [
+      {
+        'text': 'PEM',
+        'correct': false,
+      },
+      {
+        'text': 'TLS',
+        'correct': false,
+      },
+      {
+        'text': 'ESP',
+        'correct': true,
+      },
+      {
+        'text': 'S/MIME',
+        'correct': false,
       },
     ],
   },
