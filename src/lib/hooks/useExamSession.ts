@@ -50,6 +50,15 @@ export function useExamSession(subjectName: string, count = DEFAULT_EXAM_QUESTIO
     Object.fromEntries(questionIndices.map((idx) => [idx, []])),
   );
 
+  const [answerOrders] = useState<Record<number, number[]>>(() =>
+    Object.fromEntries(
+      questionIndices.map((idx) => [
+        idx,
+        shuffle(subject.questions[idx].answers.map((_, i) => i)),
+      ]),
+    ),
+  );
+
   const [result, setResult] = useState<ExamResult | null>(null);
   const startTimeRef = useRef<number>(0);
   const [elapsedMs, setElapsedMs] = useState(0);
@@ -132,8 +141,9 @@ export function useExamSession(subjectName: string, count = DEFAULT_EXAM_QUESTIO
         questionIndex: idx,
         question: subject.questions[idx],
         selectedAnswers: answers[idx] ?? [],
+        answerOrder: answerOrders[idx],
       })),
-    [answers, questionIndices, subject.questions],
+    [answers, answerOrders, questionIndices, subject.questions],
   );
 
   return {

@@ -97,7 +97,7 @@ export function ExamPage({ subjectName, onFinish }: ExamPageProps) {
         )}
 
         <div className="space-y-8">
-          {questionData.map(({ order, questionIndex, question, selectedAnswers }) => {
+          {questionData.map(({ order, questionIndex, question, selectedAnswers, answerOrder }) => {
             const questionResult = result?.questions.find(
               (q) => q.questionIndex === questionIndex,
             );
@@ -120,18 +120,21 @@ export function ExamPage({ subjectName, onFinish }: ExamPageProps) {
                 </div>
 
                 <div className="space-y-3">
-                  {question.answers.map((answer, index) => (
-                    <AnswerOption
-                      key={index}
-                      index={index}
-                      text={answer.text}
-                      isSelected={selectedAnswers.includes(index)}
-                      isCorrectAnswer={answer.correct}
-                      submitted={submitted}
-                      disabled={submitted}
-                      onToggle={() => toggleAnswer(questionIndex, index)}
-                    />
-                  ))}
+                  {answerOrder.map((originalIndex, displayIndex) => {
+                    const answer = question.answers[originalIndex];
+                    return (
+                      <AnswerOption
+                        key={originalIndex}
+                        index={displayIndex}
+                        text={answer.text}
+                        isSelected={selectedAnswers.includes(originalIndex)}
+                        isCorrectAnswer={answer.correct}
+                        submitted={submitted}
+                        disabled={submitted}
+                        onToggle={() => toggleAnswer(questionIndex, originalIndex)}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             );
