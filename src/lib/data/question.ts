@@ -815,9 +815,9 @@ export const questions = [
   {
     text: '50. Model kontroli dostępu MIC zabrania podmiotowi o etykiecie P:',
     answers: [
-      { text: 'zapisu obiektu o wyższej etykiecie niż P', correct: false },
+      { text: 'zapisu obiektu o wyższej etykiecie niż P', correct: true },
       { text: 'odczytu obiektu o niższej etykiecie niż P', correct: true },
-      { text: 'zapisu obiektu o niższej etykiecie niż P', correct: true },
+      { text: 'zapisu obiektu o niższej etykiecie niż P', correct: false },
     ],
   },
   {

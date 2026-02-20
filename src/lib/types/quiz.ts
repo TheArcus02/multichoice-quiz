@@ -59,3 +59,24 @@ export interface CurrentQuestionData {
   totalQuestions: number;
   sessionAnswer: SessionAnswer | undefined;
 }
+
+// --- Exam mode ---
+
+export interface ExamAnswer {
+  selectedAnswers: number[];
+}
+
+export interface ExamQuestionResult {
+  questionIndex: number;
+  selectedAnswers: number[];
+  score: number;
+  maxScore: 1;
+}
+
+export interface ExamResult {
+  totalScore: number;
+  maxScore: 15;
+  passed: boolean;
+  timeElapsedMs: number;
+  questions: ExamQuestionResult[];
+}

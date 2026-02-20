@@ -30,10 +30,14 @@ export function AnswerOption({
   let icon: React.ReactNode = null;
 
   if (submitted) {
-    if (isCorrectAnswer) {
+    if (isCorrectAnswer && isSelected) {
       borderColor = 'border-green-500';
       bgColor = 'bg-green-500/10';
       icon = <Check className="size-4 text-green-500" />;
+    } else if (isCorrectAnswer && !isSelected) {
+      borderColor = 'border-amber-500';
+      bgColor = 'bg-amber-500/10';
+      icon = <Check className="size-4 text-amber-500" />;
     } else if (isSelected && !isCorrectAnswer) {
       borderColor = 'border-red-500';
       bgColor = 'bg-red-500/10';
@@ -63,13 +67,15 @@ export function AnswerOption({
       <span
         className={cn(
           'flex size-6 shrink-0 items-center justify-center rounded-md border text-xs font-medium transition-colors',
-          submitted && isCorrectAnswer
+          submitted && isCorrectAnswer && isSelected
             ? 'border-green-500 bg-green-500 text-white'
-            : submitted && isSelected && !isCorrectAnswer
-              ? 'border-red-500 bg-red-500 text-white'
-              : isSelected
-                ? 'border-primary bg-primary text-primary-foreground'
-                : 'border-border bg-background text-muted-foreground',
+            : submitted && isCorrectAnswer && !isSelected
+              ? 'border-amber-500 bg-amber-500 text-white'
+              : submitted && isSelected && !isCorrectAnswer
+                ? 'border-red-500 bg-red-500 text-white'
+                : isSelected
+                  ? 'border-primary bg-primary text-primary-foreground'
+                  : 'border-border bg-background text-muted-foreground',
         )}
       >
         {submitted && (isCorrectAnswer || (isSelected && !isCorrectAnswer))

@@ -26,14 +26,19 @@ import {
 
 interface SubjectSelectorProps {
   onStart: (config: QuizConfig) => void;
+  onStartExam: (subjectName: string) => void;
 }
 
-export function SubjectSelector({ onStart }: SubjectSelectorProps) {
+export function SubjectSelector({ onStart, onStartExam }: SubjectSelectorProps) {
   // Force re-render after reset
   const [, setTick] = useState(0);
 
   function handleStart(subjectName: string, mode: QuizMode) {
     onStart({ subjectName, mode });
+  }
+
+  function handleStartExam(subjectName: string) {
+    onStartExam(subjectName);
   }
 
   function handleReset(subjectName: string) {
@@ -68,6 +73,7 @@ export function SubjectSelector({ onStart }: SubjectSelectorProps) {
               (a) => a.isCorrect,
             ).length;
             const incorrectCount = progress.incorrectIndices.length;
+            const canStartExam = totalQuestions >= 15;
 
             return (
               <Card key={subject.name}>
@@ -114,6 +120,11 @@ export function SubjectSelector({ onStart }: SubjectSelectorProps) {
                       <Play className="size-4" data-icon="inline-start" />
                       Wszystkie pytania
                     </Button>
+                    {canStartExam && (
+                      <Button variant="outline" onClick={() => handleStartExam(subject.name)}>
+                        Egzamin (15 pytań)
+                      </Button>
+                    )}
                     <Button
                       variant="secondary"
                       onClick={() => handleStart(subject.name, 'incorrectOnly')}
