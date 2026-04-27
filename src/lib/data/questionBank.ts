@@ -1,4 +1,5 @@
 import { questions4_0 } from './40-questions.js';
+import { bsiLabQuestions } from './bsi-lab.js';
 import { questions as bsiQuestions } from './question.js';
 
 export interface Answer {
@@ -30,6 +31,10 @@ export const questionBank: Subject[] = [
   {
     name: 'Przemysł 4.0',
     questions: questions4_0,
+  },
+  {
+    name: 'BSI Lab',
+    questions: bsiLabQuestions,
   },
   // Dodaj kolejne przedmioty tutaj, np.:
   // { name: 'SK', questions: skQuestions },
