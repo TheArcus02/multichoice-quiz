@@ -650,7 +650,7 @@ export const bsiLabQuestions = [
       {
         'text':
           'najpierw hosts.allow, potem hosts.deny, do odnalezienia pasującej reguły',
-        'correct': false,
+        'correct': true,
       },
       {
         'text':
@@ -660,7 +660,7 @@ export const bsiLabQuestions = [
       {
         'text':
           'najpierw hosts.deny, potem hosts.allow, do odnalezienia pierwszej pasującej reguły',
-        'correct': true,
+        'correct': false,
       },
       {
         'text':
@@ -3272,10 +3272,10 @@ export const bsiLabQuestions = [
         'correct': false,
       },
       { 'text': 'brak uprawnień do odczytu i zapisu', 'correct': false },
-      { 'text': 'ma uprawnienia do odczytu i zapisu', 'correct': false },
+      { 'text': 'ma uprawnienia do odczytu i zapisu', 'correct': true },
       {
         'text': 'ma uprawnienia do zapisu, brak uprawnienia do odczytu',
-        'correct': true,
+        'correct': false,
       },
     ],
   },
@@ -3792,7 +3792,7 @@ export const bsiLabQuestions = [
       'Które z poniższych protokołów realizują kryptograficzne tunele wirtualne z ochroną integralności:',
     'answers': [
       { 'text': 'AH', 'correct': true },
-      { 'text': 'ESP', 'correct': false },
+      { 'text': 'ESP', 'correct': true },
       { 'text': 'S/MIME', 'correct': false },
       { 'text': 'TLS', 'correct': false },
     ],
