@@ -15,6 +15,8 @@ export interface Question {
 export interface Subject {
   name: string;
   questions: Question[];
+  /** Domyślnie 15. */
+  examQuestionCount?: number;
 }
 
 /**
@@ -35,6 +37,7 @@ export const questionBank: Subject[] = [
   {
     name: 'BSI Lab',
     questions: bsiLabQuestions,
+    examQuestionCount: 12,
   },
   // Dodaj kolejne przedmioty tutaj, np.:
   // { name: 'SK', questions: skQuestions },

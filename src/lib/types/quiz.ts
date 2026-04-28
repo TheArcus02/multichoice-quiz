@@ -75,7 +75,7 @@ export interface ExamQuestionResult {
 
 export interface ExamResult {
   totalScore: number;
-  maxScore: 15;
+  maxScore: number;
   passed: boolean;
   timeElapsedMs: number;
   questions: ExamQuestionResult[];

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { AnswerOption } from '@/components/quiz/answerOption';
+import { CopyQuestionButton } from '@/components/quiz/copyQuestionButton';
 import { useExamSession } from '@/lib/hooks/useExamSession';
 
 interface ExamPageProps {
@@ -103,20 +104,23 @@ export function ExamPage({ subjectName, onFinish }: ExamPageProps) {
             );
             return (
               <div key={questionIndex} className="rounded-xl border border-border bg-card p-5">
-                <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
-                  <div>
+                <div className="mb-4 space-y-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="text-xs font-semibold text-muted-foreground">
                       Pytanie {order + 1}
                     </div>
-                    <h2 className="mt-1 text-lg font-semibold text-foreground">
-                      {question.text}
-                    </h2>
+                    <div className="flex flex-wrap items-center justify-end gap-2">
+                      {submitted && questionResult && (
+                        <Badge variant="outline" className="shrink-0">
+                          {questionResult.score.toFixed(2)} / 1
+                        </Badge>
+                      )}
+                      <CopyQuestionButton question={question} className="shrink-0" />
+                    </div>
                   </div>
-                  {submitted && questionResult && (
-                    <Badge variant="outline">
-                      {questionResult.score.toFixed(2)} / 1
-                    </Badge>
-                  )}
+                  <h2 className="min-w-0 text-lg font-semibold text-foreground">
+                    {question.text}
+                  </h2>
                 </div>
 
                 <div className="space-y-3">

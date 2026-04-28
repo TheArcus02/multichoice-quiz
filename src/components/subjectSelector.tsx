@@ -73,7 +73,8 @@ export function SubjectSelector({ onStart, onStartExam }: SubjectSelectorProps) 
               (a) => a.isCorrect,
             ).length;
             const incorrectCount = progress.incorrectIndices.length;
-            const canStartExam = totalQuestions >= 15;
+            const examSize = subject.examQuestionCount ?? 15;
+            const canStartExam = totalQuestions >= examSize;
 
             return (
               <Card key={subject.name}>
@@ -122,7 +123,7 @@ export function SubjectSelector({ onStart, onStartExam }: SubjectSelectorProps) 
                     </Button>
                     {canStartExam && (
                       <Button variant="outline" onClick={() => handleStartExam(subject.name)}>
-                        Egzamin (15 pytań)
+                        Egzamin ({examSize} pytań)
                       </Button>
                     )}
                     <Button

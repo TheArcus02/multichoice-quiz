@@ -3,7 +3,6 @@ import { questionBank } from '@/lib/data/questionBank';
 import type { ExamQuestionResult, ExamResult } from '@/lib/types/quiz';
 
 const DEFAULT_EXAM_QUESTION_COUNT = 15;
-const PASSING_SCORE = 7.5;
 
 function shuffle<T>(arr: T[]): T[] {
   const copy = [...arr];
@@ -34,16 +33,19 @@ function calculateQuestionScore(
   return roundToQuarter(clampScore(raw));
 }
 
-export function useExamSession(subjectName: string, count = DEFAULT_EXAM_QUESTION_COUNT) {
+export function useExamSession(subjectName: string, count?: number) {
   const subject = useMemo(
     () => questionBank.find((s) => s.name === subjectName)!,
     [subjectName],
   );
 
+  const examCount =
+    count ?? subject.examQuestionCount ?? DEFAULT_EXAM_QUESTION_COUNT;
+
   const [questionIndices] = useState<number[]>(() => {
     const indices = subject.questions.map((_, i) => i);
     const shuffled = shuffle(indices);
-    return shuffled.slice(0, Math.min(count, shuffled.length));
+    return shuffled.slice(0, Math.min(examCount, shuffled.length));
   });
 
   const [answers, setAnswers] = useState<Record<number, number[]>>(() =>
@@ -121,11 +123,13 @@ export function useExamSession(subjectName: string, count = DEFAULT_EXAM_QUESTIO
     const totalScore = roundToQuarter(
       questionResults.reduce((sum, item) => sum + item.score, 0),
     );
+    const maxScore = questionIndices.length;
+    const passingThreshold = roundToQuarter(maxScore * 0.5);
     const timeElapsedMs = Date.now() - startTimeRef.current;
     const nextResult: ExamResult = {
       totalScore,
-      maxScore: DEFAULT_EXAM_QUESTION_COUNT,
-      passed: totalScore >= PASSING_SCORE,
+      maxScore,
+      passed: totalScore >= passingThreshold,
       timeElapsedMs,
       questions: questionResults,
     };
