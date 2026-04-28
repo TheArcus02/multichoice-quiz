@@ -115,7 +115,7 @@ export function ExamPage({ subjectName, onFinish }: ExamPageProps) {
                           {questionResult.score.toFixed(2)} / 1
                         </Badge>
                       )}
-                      <CopyQuestionButton question={question} className="shrink-0" />
+                      <CopyQuestionButton question={question} format="json" className="shrink-0" />
                     </div>
                   </div>
                   <h2 className="min-w-0 text-lg font-semibold text-foreground">

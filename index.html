@@ -1,7 +1,17 @@
 <!doctype html>
-<html lang="pl" class="dark">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem('quiz-theme');
+          var dark = s === null || s === 'dark';
+          if (s === 'light') dark = false;
+          document.documentElement.classList.toggle('dark', dark);
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz App</title>

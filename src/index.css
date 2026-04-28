@@ -6,23 +6,24 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0);
+  /* Jasny motyw: tło lekko szare (nie #fff), karty odrobinę jaśniejsze */
+  --background: oklch(0.958 0.012 264.5);
   --foreground: oklch(0.13 0.028 261.692);
-  --card: oklch(1 0 0);
+  --card: oklch(0.985 0.008 264.5);
   --card-foreground: oklch(0.13 0.028 261.692);
-  --popover: oklch(1 0 0);
+  --popover: oklch(0.985 0.008 264.5);
   --popover-foreground: oklch(0.13 0.028 261.692);
   --primary: oklch(0.51 0.23 277);
   --primary-foreground: oklch(0.96 0.02 272);
-  --secondary: oklch(0.967 0.001 286.375);
+  --secondary: oklch(0.94 0.012 264.5);
   --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.003 264.542);
+  --muted: oklch(0.93 0.014 264.5);
   --muted-foreground: oklch(0.551 0.027 264.364);
-  --accent: oklch(0.967 0.003 264.542);
+  --accent: oklch(0.925 0.018 264.5);
   --accent-foreground: oklch(0.21 0.034 264.665);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.928 0.006 264.531);
-  --input: oklch(0.928 0.006 264.531);
+  --border: oklch(0.905 0.014 264.5);
+  --input: oklch(0.905 0.014 264.5);
   --ring: oklch(0.707 0.022 261.325);
   --chart-1: oklch(0.79 0.10 275);
   --chart-2: oklch(0.68 0.16 277);
@@ -30,13 +31,13 @@
   --chart-4: oklch(0.51 0.23 277);
   --chart-5: oklch(0.46 0.21 277);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0.002 247.839);
+  --sidebar: oklch(0.97 0.01 264.5);
   --sidebar-foreground: oklch(0.13 0.028 261.692);
   --sidebar-primary: oklch(0.51 0.23 277);
   --sidebar-primary-foreground: oklch(0.96 0.02 272);
-  --sidebar-accent: oklch(0.967 0.003 264.542);
+  --sidebar-accent: oklch(0.935 0.016 264.5);
   --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
-  --sidebar-border: oklch(0.928 0.006 264.531);
+  --sidebar-border: oklch(0.905 0.014 264.5);
   --sidebar-ring: oklch(0.707 0.022 261.325);
 }
 
