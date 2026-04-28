@@ -40,7 +40,7 @@ export const bsiLabQuestions = [
     'answers': [
       { 'text': 'Alpine docker containers', 'correct': false },
       { 'text': 'Defender Application Guard', 'correct': true },
-      { 'text': 'AppContainer', 'correct': false },
+      { 'text': 'AppContainer', 'correct': true },
       { 'text': 'Ring - 1 compartmentalization', 'correct': false },
     ],
   },
@@ -729,7 +729,7 @@ export const bsiLabQuestions = [
       {
         'text':
           'pozwala aplikacji 32-bitowej na modyfikację obszarów rejestru, do których aplikacja nie ma prawa zapisu',
-        'correct': false,
+        'correct': true,
       },
       { 'text': 'dotyczy wszystkich gałęzi rejestru', 'correct': false },
       {
@@ -3115,7 +3115,7 @@ export const bsiLabQuestions = [
   },
   {
     'text':
-      '388. $ getfacl skrypt user::rw- user:jbond:r-x group::rwx group:agents:rwx mask::r-x other::- Oznacza, że:',
+      '388. $ getfacl skrypt user::rw- user:jbond:r-x group::rwx group:agents:rwx mask::r-x other::-w- Oznacza, że:',
     'answers': [
       { 'text': 'grupa agents może zmodyfikować skrypt', 'correct': false },
       {
