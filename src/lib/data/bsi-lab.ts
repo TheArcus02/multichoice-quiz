@@ -2083,7 +2083,8 @@ export const bsiLabQuestions = [
     ],
   },
   {
-    'text': '293. getfacl --omit-header test ... Oznacza, że:',
+    'text':
+      '293. getfacl --omit-header test user::rwx user:jbond:rwx group::r-- group:agents:r-xmask::r-x other::--- default:user::rwx default:user:jbond:r-x default:group::-wx default:group:agents:-wx default:mask::--x default:other::r-x Oznacza, że:',
     'answers': [
       {
         'text': 'grupa "agents" może modyfikować zawartość obiektu test',
@@ -3749,16 +3750,6 @@ export const bsiLabQuestions = [
       { 'text': 'ARP cache poisoning', 'correct': false },
       { 'text': 'session hijacking', 'correct': true },
       { 'text': 'name spoofing', 'correct': false },
-    ],
-  },
-  {
-    'text':
-      'Mechanizm filtrów eBPF umożliwia wykonanie na odebranym datagramie IP wykonanie następujących operacji zanim pakiet zostanie dostarczony do jądra systemu operacyjnego:',
-    'answers': [
-      { 'text': 'odrzucenie datagramu', 'correct': true },
-      { 'text': 'zmodyfikowanie nagłówka datagramu', 'correct': false },
-      { 'text': 'zmodyfikowanie treści datagramu', 'correct': false },
-      { 'text': 'przesłanie datagramu do innego komputera', 'correct': false },
     ],
   },
   {
