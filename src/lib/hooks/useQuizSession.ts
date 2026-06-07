@@ -60,6 +60,7 @@ export function useQuizSession(config: QuizConfig) {
     () => questionBank.find((s) => s.name === config.subjectName)!,
     [config.subjectName],
   );
+  const answerMode = subject.answerMode ?? 'multiple';
 
   // Build initial session
   const [session, setSession] = useState<QuizSession>(() => {
@@ -120,9 +121,10 @@ export function useQuizSession(config: QuizConfig) {
       question: subject.questions[session.currentIndex],
       originalIndex: session.currentIndex,
       totalQuestions: session.availableIndices.length,
+      answerMode,
       sessionAnswer: session.answers[session.currentIndex],
     };
-  }, [session, subject]);
+  }, [answerMode, session, subject]);
 
   const stats: QuizStats = useMemo(() => {
     const progress = loadProgress(session.subjectName);
@@ -188,9 +190,12 @@ export function useQuizSession(config: QuizConfig) {
       if (existing?.submitted) return prev;
 
       const selected = existing?.selectedAnswers ?? [];
-      const next = selected.includes(answerIndex)
-        ? selected.filter((i) => i !== answerIndex)
-        : [...selected, answerIndex];
+      const next =
+        answerMode === 'single'
+          ? [answerIndex]
+          : selected.includes(answerIndex)
+            ? selected.filter((i) => i !== answerIndex)
+            : [...selected, answerIndex];
 
       return {
         ...prev,
@@ -204,7 +209,7 @@ export function useQuizSession(config: QuizConfig) {
         },
       };
     });
-  }, []);
+  }, [answerMode]);
 
   const submitAnswer = useCallback(() => {
     setSession((prev) => {

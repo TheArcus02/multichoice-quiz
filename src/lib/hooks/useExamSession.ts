@@ -38,6 +38,7 @@ export function useExamSession(subjectName: string, count?: number) {
     () => questionBank.find((s) => s.name === subjectName)!,
     [subjectName],
   );
+  const answerMode = subject.answerMode ?? 'multiple';
 
   const examCount =
     count ?? subject.examQuestionCount ?? DEFAULT_EXAM_QUESTION_COUNT;
@@ -82,15 +83,18 @@ export function useExamSession(subjectName: string, count?: number) {
     setAnswers((prev) => {
       if (result) return prev;
       const selected = prev[questionIndex] ?? [];
-      const next = selected.includes(answerIndex)
-        ? selected.filter((i) => i !== answerIndex)
-        : [...selected, answerIndex];
+      const next =
+        answerMode === 'single'
+          ? [answerIndex]
+          : selected.includes(answerIndex)
+            ? selected.filter((i) => i !== answerIndex)
+            : [...selected, answerIndex];
       return {
         ...prev,
         [questionIndex]: next,
       };
     });
-  }, [result]);
+  }, [answerMode, result]);
 
   const finishExam = useCallback(() => {
     if (result) return result;
@@ -152,6 +156,7 @@ export function useExamSession(subjectName: string, count?: number) {
 
   return {
     subjectName,
+    answerMode,
     questionData,
     answers,
     toggleAnswer,

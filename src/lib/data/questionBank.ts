@@ -13,9 +13,13 @@ export interface Question {
   answers: Answer[];
 }
 
+export type AnswerMode = "single" | "multiple";
+
 export interface Subject {
   name: string;
   questions: Question[];
+  /** Domyślnie multiple. */
+  answerMode?: AnswerMode;
   /** Domyślnie 15. */
   examQuestionCount?: number;
 }
@@ -43,6 +47,7 @@ export const questionBank: Subject[] = [
   {
     name: "Sieci Neuronowe",
     questions: aiQuestions,
+    answerMode: "single",
     examQuestionCount: 15,
   },
 ];

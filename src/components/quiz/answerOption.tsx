@@ -1,11 +1,13 @@
 import { Check, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import type { AnswerMode } from '@/lib/data/questionBank';
 
 const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 interface AnswerOptionProps {
   index: number;
   text: string;
+  answerMode: AnswerMode;
   isSelected: boolean;
   isCorrectAnswer: boolean;
   submitted: boolean;
@@ -16,6 +18,7 @@ interface AnswerOptionProps {
 export function AnswerOption({
   index,
   text,
+  answerMode,
   isSelected,
   isCorrectAnswer,
   submitted,
@@ -23,6 +26,7 @@ export function AnswerOption({
   onToggle,
 }: AnswerOptionProps) {
   const letter = LETTERS[index] ?? '?';
+  const isSingleChoice = answerMode === 'single';
 
   let borderColor = 'border-border';
   let bgColor = 'bg-card';
@@ -63,10 +67,10 @@ export function AnswerOption({
         disabled && 'cursor-default',
       )}
     >
-      {/* Checkbox indicator */}
       <span
         className={cn(
-          'flex size-6 shrink-0 items-center justify-center rounded-md border text-xs font-medium transition-colors',
+          'flex size-6 shrink-0 items-center justify-center border text-xs font-medium transition-colors',
+          isSingleChoice ? 'rounded-full' : 'rounded-md',
           submitted && isCorrectAnswer && isSelected
             ? 'border-green-500 bg-green-500 text-white'
             : submitted && isCorrectAnswer && !isSelected
@@ -81,7 +85,9 @@ export function AnswerOption({
         {submitted && (isCorrectAnswer || (isSelected && !isCorrectAnswer))
           ? icon
           : isSelected
-            ? <Check className="size-3.5" />
+            ? isSingleChoice
+              ? <span className="size-2.5 rounded-full bg-current" />
+              : <Check className="size-3.5" />
             : letter}
       </span>
 

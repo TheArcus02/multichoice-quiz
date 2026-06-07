@@ -18,7 +18,7 @@ function formatDuration(ms: number): string {
 }
 
 export function ExamPage({ subjectName, onFinish }: ExamPageProps) {
-  const { questionData, toggleAnswer, finishExam, result, elapsedMs } =
+  const { answerMode, questionData, toggleAnswer, finishExam, result, elapsedMs } =
     useExamSession(subjectName);
 
   const submitted = Boolean(result);
@@ -131,6 +131,7 @@ export function ExamPage({ subjectName, onFinish }: ExamPageProps) {
                         key={originalIndex}
                         index={displayIndex}
                         text={answer.text}
+                        answerMode={answerMode}
                         isSelected={selectedAnswers.includes(originalIndex)}
                         isCorrectAnswer={answer.correct}
                         submitted={submitted}

@@ -1,4 +1,4 @@
-import type { Question } from '@/lib/data/questionBank';
+import type { AnswerMode, Question } from '@/lib/data/questionBank';
 
 // --- Persisted in localStorage ---
 
@@ -57,6 +57,7 @@ export interface CurrentQuestionData {
   question: Question;
   originalIndex: number;
   totalQuestions: number;
+  answerMode: AnswerMode;
   sessionAnswer: SessionAnswer | undefined;
 }
 

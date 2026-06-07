@@ -9,13 +9,15 @@ interface QuestionCardProps {
 }
 
 export function QuestionCard({ data, onToggleAnswer }: QuestionCardProps) {
-  const { question, sessionAnswer } = data;
+  const { question, answerMode, sessionAnswer } = data;
   const submitted = sessionAnswer?.submitted ?? false;
   const selectedAnswers = sessionAnswer?.selectedAnswers ?? [];
+  const answerModeLabel =
+    answerMode === 'single' ? 'JEDNOKROTNY WYBÓR' : 'WIELOKROTNY WYBÓR';
   return (
     <div className="space-y-6">
       {/* Badge */}
-      <Badge variant="secondary">MULTIPLE CHOICE</Badge>
+      <Badge variant="secondary">{answerModeLabel}</Badge>
 
       {/* Question text */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -32,6 +34,7 @@ export function QuestionCard({ data, onToggleAnswer }: QuestionCardProps) {
             key={i}
             index={i}
             text={answer.text}
+            answerMode={answerMode}
             isSelected={selectedAnswers.includes(i)}
             isCorrectAnswer={answer.correct}
             submitted={submitted}
