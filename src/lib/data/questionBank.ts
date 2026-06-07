@@ -1,6 +1,7 @@
-import { questions4_0 } from './40-questions.js';
-import { bsiLabQuestions } from './bsi-lab.js';
-import { questions as bsiQuestions } from './question.js';
+import { questions4_0 } from "./40-questions.js";
+import { aiQuestions } from "./ai.js";
+import { bsiLabQuestions } from "./bsi-lab.js";
+import { questions as bsiQuestions } from "./question.js";
 
 export interface Answer {
   text: string;
@@ -27,18 +28,21 @@ export interface Subject {
  */
 export const questionBank: Subject[] = [
   {
-    name: 'BSI',
+    name: "BSI",
     questions: bsiQuestions,
   },
   {
-    name: 'Przemysł 4.0',
+    name: "Przemysł 4.0",
     questions: questions4_0,
   },
   {
-    name: 'BSI Lab',
+    name: "BSI Lab",
     questions: bsiLabQuestions,
     examQuestionCount: 12,
   },
-  // Dodaj kolejne przedmioty tutaj, np.:
-  // { name: 'SK', questions: skQuestions },
+  {
+    name: "Sieci Neuronowe",
+    questions: aiQuestions,
+    examQuestionCount: 15,
+  },
 ];
