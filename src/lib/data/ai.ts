@@ -861,4 +861,486 @@ export const aiQuestions = [
       { text: "co najmniej 3", correct: false },
     ],
   },
+  {
+    text: "Metoda analizy dyskryminacyjnej:",
+    answers: [
+      {
+        text: "Opiera się na minimalizacji różnicy rzutów wartości średnich w klasach oraz minimalizacji odpowiednio przekształconej macierzy kowariancji",
+        correct: false,
+      },
+      { text: "jest odmianą algorytmu analizy skupisk", correct: false },
+      {
+        text: "w wersji zaproponowanej przez R. Fishera automatycznie tworzy liniową płaszczyznę separującą",
+        correct: true,
+      },
+      {
+        text: "Maksymalizuje tzw. margines decyzyjny po to aby przybliżyć granicę decyzyjną",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Autoenkoder wariacyjny różni się od zwykłego następującymi cechami:",
+    answers: [
+      { text: "liczbą wejść dekodera", correct: false },
+      {
+        text: "randomizacją sygnału przekazywanego z enkodera do dekodera",
+        correct: true,
+      },
+      { text: "sposobem obliczania błędu rekonstrukcji", correct: false },
+      { text: "funkcją straty", correct: true },
+      { text: "sposobem prezentowania przykładów wejściowych", correct: false },
+    ],
+  },
+  {
+    text: "Pole receptorowe pojedynczego unitu w sieci neuronowej składającej się z 3 warstw splotowych o wielkościach kerneli 3x3, 5x5, 1x1 przy stride równym 1 i bez poolingu ma wymiar:",
+    answers: [
+      { text: "7x7", correct: true },
+      { text: "9x9", correct: false },
+      { text: "6x6", correct: false },
+      { text: "3x3", correct: false },
+      { text: "1x1", correct: false },
+      { text: "8x8", correct: false },
+    ],
+  },
+  {
+    text: "Wariacyjny autoenkoder różni się od zwykłego tym, że:",
+    answers: [
+      {
+        text: "daje gwarancję, że wektory zmiennych ukrytych są unikalne dla wszystkich przypadków",
+        correct: false,
+      },
+      {
+        text: "nauczone wektory zmiennych ukrytych rozłożone są równomiernie po całej przestrzeni",
+        correct: false,
+      },
+      {
+        text: "wariancja wskazań autoenkodera wykorzystywana jest do uczenia sieci",
+        correct: false,
+      },
+      {
+        text: "uczony jest rozkład prawdopodobieństwa, który wykorzystywany jest do generowania wektora ukrytych zmiennych",
+        correct: true,
+      },
+    ],
+  },
+  {
+    text: "Zaletą funkcji aktywacji ReLU jest:",
+    answers: [
+      { text: "ściskanie rezultatu w przedziale [0,1]", correct: false },
+      {
+        text: "możliwość wykorzystania algorytmu wstecznej propagacji błędu",
+        correct: false,
+      },
+      {
+        text: "niezerowa pochodna dla dowolnego argumentu dodatniego",
+        correct: true,
+      },
+      { text: "łatwość inicjalizacji parametrów", correct: false },
+    ],
+  },
+  {
+    text: "Reguła delta dla neuronu nieliniowego o wektorze parametrów w, funkcji aktywacji f, aktywacji z i błędzie delta ma postać:",
+    answers: [
+      { text: "w ← w - ηδx df/dz", correct: true },
+      { text: "w ← w + ηδx", correct: false },
+      { text: "w ← w + ηδ df/dz", correct: false },
+      { text: "w ← w - ηδ df/dz", correct: false },
+    ],
+  },
+  {
+    text: "Pojedyncza jednostka splotowa o jądrze 3x5, 4 kanałach wejściowych, stride=2 i padding=3 ma liczbę parametrów:",
+    answers: [
+      { text: "45", correct: false },
+      { text: "61", correct: true },
+      { text: "60", correct: false },
+      { text: "121", correct: false },
+      { text: "46", correct: false },
+      { text: "120", correct: false },
+    ],
+  },
+  {
+    text: "Składanie ze sobą warstw liniowych jest dyskusyjne, ponieważ:",
+    answers: [
+      {
+        text: "złożenie operacji liniowych jest operacją liniową",
+        correct: true,
+      },
+      {
+        text: "większość problemów rzeczywistych jest liniowo separowalna",
+        correct: false,
+      },
+      {
+        text: "prowadzi do niepotrzebnego wzrostu liczby parametrów modelu",
+        correct: false,
+      },
+      {
+        text: "większość problemów rzeczywistych nie jest liniowo separowalna",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Zbiór walidacyjny wykorzystywany jest w uczeniu sieci neuronowych do:",
+    answers: [
+      { text: "przerywania uczenia w przypadku przeuczenia", correct: true },
+      { text: "żadna z pozostałych odpowiedzi", correct: false },
+      { text: "efektywniejszego liczenia gradientu", correct: false },
+      { text: "sprawdzania poprawności implementacji", correct: false },
+      { text: "testowania finalnej jakości modelu", correct: false },
+    ],
+  },
+  {
+    text: "Technikę oceny krzyżowej (k-fold cross validation) stosuje się gdy:",
+    answers: [
+      {
+        text: "liczba przykładów jest większa niż rozmiar małej statystycznej próby",
+        correct: false,
+      },
+      {
+        text: "liczba przykładów uczących jest większa niż 100 a mniejsza niż dziesiątki tysięcy",
+        correct: true,
+      },
+      { text: "liczba atrybutów jest równa k", correct: false },
+      {
+        text: "liczba przykładów jest rzędu wielu tysięcy przykładów",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Główną przeszkodą w uczeniu modeli głębokich jest/było:",
+    answers: [
+      { text: "zjawisko zanikających gradientów", correct: true },
+      { text: "ograniczona moc obliczeniowa", correct: false },
+      { text: "ograniczenia pamięciowe", correct: false },
+      { text: "problem klątwy wymiarowości", correct: false },
+      { text: "brak odpowiedniej inicjalizacji", correct: false },
+    ],
+  },
+  {
+    text: "Autoenkodery rozwiązujące problem autoasocjacji charakteryzuje to, że:",
+    answers: [
+      {
+        text: "rekurencyjnie używają wektora ukrytego jako wejścia",
+        correct: false,
+      },
+      {
+        text: "oryginalne dane są najpierw reprezentowane jako pewien wektor cech, a następnie odtwarzane",
+        correct: true,
+      },
+      {
+        text: "oryginalne przypadki uczące są zapamiętywane w wektorze zmiennych ukrytych",
+        correct: false,
+      },
+      {
+        text: "porównują wektor ukryty z wejściem",
+        correct: false,
+      },
+      {
+        text: "do ich uczenia nie można użyć wstecznej propagacji błędu",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Funkcja straty typowo wykorzystywana w zadaniach klasyfikacji to:",
+    answers: [
+      { text: "błąd średniokwadratowy", correct: false },
+      { text: "średni błąd absolutny", correct: false },
+      { text: "entropia krzyżowa", correct: true },
+      { text: "strata zerojedynkowa", correct: false },
+      { text: "trafność klasyfikacji", correct: false },
+    ],
+  },
+  {
+    text: "Ściskające funkcje aktywacji to między innymi:",
+    answers: [
+      { text: "Leaky ReLU i ReLU", correct: false },
+      { text: "funkcja liniowa i tanh", correct: false },
+      { text: "sigmoidalna i ReLU", correct: false },
+      { text: "sigmoidalna i tangens hiperboliczny", correct: true },
+    ],
+  },
+  {
+    text: "Uczenie modeli sieci neuronowych wymaga obliczenia gradientu:",
+    answers: [
+      { text: "hiperparametrów względem parametrów", correct: false },
+      { text: "parametrów względem funkcji straty", correct: false },
+      { text: "funkcji straty względem parametrów modelu", correct: true },
+      { text: "funkcji straty względem wejść modelu", correct: false },
+    ],
+  },
+  {
+    text: "Dropout to technika regularyzacji charakteryzująca się:",
+    answers: [
+      {
+        text: "stochastycznym usuwaniem neuronów podczas uczenia i testowania",
+        correct: false,
+      },
+      {
+        text: "stochastycznym usuwaniem neuronów podczas uczenia i zmniejszaniem amplitudy wyjść podczas testowania",
+        correct: true,
+      },
+      {
+        text: "stochastycznym usuwaniem neuronów podczas testowania",
+        correct: false,
+      },
+      {
+        text: "stochastycznym usuwaniem neuronów podczas uczenia i zwiększaniem amplitudy wyjść podczas testowania",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Klasyfikowanie nowego obiektu przy użyciu reguł wygenerowanych algorytmem LEM2 odbywa się na podstawie:",
+    answers: [
+      { text: "strategii list priorytetowej reguł", correct: false },
+      {
+        text: "najdokładniejszej reguły dopasowanej do obiektu",
+        correct: false,
+      },
+      { text: "żadna z odpowiedzi", correct: false },
+      {
+        text: "głosowania wsparciami wszystkich dopasowanych reguł",
+        correct: true,
+      },
+      {
+        text: "najsilniejszej reguły dopasowanej do obiektu",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Klasyfikowanie nowego obiektu przy użyciu reguł wygenerowanych ze struktury drzewa C4.5 odbywa się na podstawie:",
+    answers: [
+      { text: "strategii list priorytetowej reguł", correct: true },
+      {
+        text: "ostatniej dopasowanej reguły",
+        correct: false,
+      },
+      {
+        text: "zbioru wszystkich dopasowanych reguł",
+        correct: false,
+      },
+      { text: "żadna z odpowiedzi", correct: false },
+      {
+        text: "najsilniejszej dopasowanej reguły",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Jakie przykłady uczące są zapamiętywane w algorytmie IBL3?",
+    answers: [
+      {
+        text: "posiadające statystycznie znaczącą wysoką wartość rekordu klasyfikacyjnego",
+        correct: true,
+      },
+      { text: "te, które są poprawnie klasyfikowane", correct: false },
+      { text: "wszystkie", correct: false },
+      { text: "żadna z odpowiedzi", correct: false },
+      {
+        text: "te, dla których podczas uczenia popełniane są błędy",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Kryterium gain-ratio używa się w indukcji drzew i reguł decyzyjnych w następujących sytuacjach:",
+    answers: [
+      {
+        text: "Jest to zastępcze kryterium podziału dla algorytmu CART",
+        correct: false,
+      },
+      {
+        text: "Stosowana jest w trakcie dyskretyzacji atrybutów liczbowych",
+        correct: false,
+      },
+      {
+        text: "Nieprawda - nie jest wykorzystywane w indukcji drzew",
+        correct: false,
+      },
+      {
+        text: "Pozwala na lepsze uwzględnienie atrybutów o zróżnicowanych dziedzinach",
+        correct: true,
+      },
+    ],
+  },
+  {
+    text: "Warunkiem zatrzymania algorytmu k-średnich jest:",
+    answers: [
+      {
+        text: "zakończenie dyskretyzacji atrybutów liczbowych",
+        correct: false,
+      },
+      { text: "utworzenie pełnego drzewa skupień", correct: false },
+      {
+        text: "optymalizacja wartości k - tzn. jej obliczenie",
+        correct: false,
+      },
+      {
+        text: "osiągnięcie stabilizacji zawartości przykładów wewnątrz skupień",
+        correct: true,
+      },
+    ],
+  },
+  {
+    text: "Autodiff to żargonowe określenie na:",
+    answers: [
+      {
+        text: "techniki automatycznego różniczkowania wykorzystywane w uczeniu głębokim",
+        correct: true,
+      },
+      {
+        text: "funkcję straty wykorzystywaną często w modelach uczonych przez autoasocjację",
+        correct: false,
+      },
+      {
+        text: "najbardziej popularną klasę algorytmów wstecznej propagacji błędu",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Estymacja parametrów w regresji logistycznej jest dokonywana poprzez:",
+    answers: [
+      {
+        text: "analityczne rozwiązanie metody najmniejszych kwadratów",
+        correct: false,
+      },
+      { text: "metodę estymacji największej wiarygodności", correct: true },
+      {
+        text: "algorytm spadku gradientu błędu średniokwadratowego",
+        correct: false,
+      },
+      { text: "algorytm Larossa", correct: false },
+    ],
+  },
+  {
+    text: "Funkcje straty dla typowych modeli neuronowych z dużą liczbą parametrów mają zazwyczaj:",
+    answers: [
+      {
+        text: "więcej lokalnych ekstremów niż punktów siodłowych",
+        correct: false,
+      },
+      {
+        text: "więcej minimów globalnych niż minimów lokalnych",
+        correct: false,
+      },
+      {
+        text: "więcej punktów siodłowych niż lokalnych ekstremów",
+        correct: true,
+      },
+      {
+        text: "więcej minimów lokalnych niż maksimów lokalnych",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "Selekcję zmiennych w modelu regresji liniowej można dokonać poprzez:",
+    answers: [
+      { text: "Obliczając przedział ufności predykcji", correct: false },
+      {
+        text: "Procedurę krokowego wyboru kontrolowanego przez obliczenie statystyki F",
+        correct: true,
+      },
+      {
+        text: "Wykorzystanie wskaźnika Lorenza do oceny każdej zmiennej niezależnej",
+        correct: false,
+      },
+      {
+        text: "Na podstawie analizy wartości lokalnego testu t w diagnostyce modelu",
+        correct: true,
+      },
+    ],
+  },
+  {
+    text: "Czy algorytm k-NN z euklidesową miarą odległości może być użyty bezpośrednio do klasyfikacji danych, gdzie osoby opisane są przez 3 atrybuty liczbowe: rozmiar buta, waga, roczne zarobki i 1 decyzyjny wskazujący klasę?",
+    answers: [
+      {
+        text: "nie, należy dokonać normalizacji zakresu atrybutów",
+        correct: true,
+      },
+      { text: "tak, jest to typowy problem", correct: false },
+      { text: "nie, gdyż liczba atrybutów jest zbyt mała", correct: false },
+      { text: "nie, gdyż należy użyć odległości miejskiej", correct: false },
+    ],
+  },
+  {
+    text: "Reguła delta dla unitu nieliniowego o wektorze parametrów w, funkcji aktywacji f, aktywacji e, który w odpowiedzi na wektor wejść x popełnił błąd delta, ma następującą postać:",
+    answers: [
+      { text: "w <- w - eta delta x df/de", correct: true },
+      { text: "w <- w + eta delta f(e) df/de", correct: false },
+      { text: "w <- w + eta delta x df/de", correct: false },
+      { text: "w <- w - eta f(x) delta/de", correct: false },
+      { text: "w <- w - eta delta x", correct: false },
+    ],
+  },
+  {
+    text: "W przypadku uczenia nienadzorowanego (np. grupowanie) do selekcji atrybutów NIE można użyć:",
+    answers: [
+      { text: "usuwania atrybutów skorelowanych", correct: false },
+      { text: "usuwania atrybutów z niską wariancją", correct: false },
+      { text: "tworzenia nowych atrybutów np. metodą PCA", correct: false },
+      {
+        text: "usuwania atrybutów z niską wartością information gain",
+        correct: true,
+      },
+    ],
+  },
+  {
+    text: "Zespół klasyfikatorów bagging, niech liczba składowych klasyfikatorów będzie T:",
+    answers: [
+      { text: "jest oparty na losowym wyborze przykładów", correct: true },
+      {
+        text: "agreguje predykcje klasyfikatorów składowych przez głosowanie",
+        correct: true,
+      },
+      { text: "buduje się rozwiązanie meta-klasyfikatora", correct: false },
+      {
+        text: "wykorzystuje losowanie bootstrapowe przykładów do T prób uczących",
+        correct: true,
+      },
+    ],
+  },
+  {
+    text: "Bramka zapominająca w standardowej architekturze LSTM sieci rekurencyjnej:",
+    answers: [
+      {
+        text: "jest siecią neuronową z funkcją aktywacji będącą sigmoidalną, której celem jest selektywne wybranie elementów, które pozostaną w pamięci",
+        correct: true,
+      },
+      {
+        text: "jest siecią neuronową z funkcją aktywacji będącą tangensem hiperbolicznym, której celem jest selektywne wybranie elementów, które pozostaną w pamięci",
+        correct: false,
+      },
+    ],
+  },
+  {
+    text: "W standardowej architekturze LSTM rekurencyjnej sieci neuronowej:",
+    answers: [
+      {
+        text: "pamięć jest najpierw filtrowana przez operację mnożenia po elementach wektora liczb z przedziału [-1, 1], a potem modyfikowana poprzez operację dodawania wektora z elementami z przedziału [-1, 1]",
+        correct: false,
+      },
+      {
+        text: "pamięć jest najpierw filtrowana przez operację mnożenia po elementach wektora liczb z przedziału [0, 1], a potem modyfikowana poprzez operację dodawania wektora z elementami z przedziału [0, 1]",
+        correct: false,
+      },
+      {
+        text: "pamięć jest najpierw filtrowana przez operację dodawania wektora liczb z przedziału [0, 1], a potem modyfikowana poprzez operację mnożenia po elementach wektora z elementami z przedziału [0, 1]",
+        correct: false,
+      },
+      {
+        text: "pamięć jest najpierw filtrowana przez operację mnożenia po elementach wektora liczb z przedziału [0, 1], a potem modyfikowana poprzez operację dodawania wektora z elementami z przedziału [-1, 1]",
+        correct: true,
+      },
+      {
+        text: "pamięć jest najpierw filtrowana przez operację dodawania wektora liczb z przedziału [-1, 1], a potem modyfikowana poprzez dodawanie wektora z elementami z przedziału [0, 1]",
+        correct: false,
+      },
+    ],
+  },
 ];
