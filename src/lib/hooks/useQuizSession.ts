@@ -223,8 +223,10 @@ export function useQuizSession(config: QuizConfig) {
         .filter((i) => i !== -1);
 
       const isCorrect =
-        correctIndices.length === existing.selectedAnswers.length &&
-        correctIndices.every((i) => existing.selectedAnswers.includes(i));
+        answerMode === 'single'
+          ? existing.selectedAnswers.some((i) => question.answers[i]?.correct)
+          : correctIndices.length === existing.selectedAnswers.length &&
+            correctIndices.every((i) => existing.selectedAnswers.includes(i));
 
       // Update localStorage progress
       const progress = loadProgress(prev.subjectName);
@@ -255,7 +257,7 @@ export function useQuizSession(config: QuizConfig) {
         },
       };
     });
-  }, [subject]);
+  }, [answerMode, subject]);
 
   /** Jump to a specific question by its original index */
   const goToQuestion = useCallback((originalIndex: number) => {

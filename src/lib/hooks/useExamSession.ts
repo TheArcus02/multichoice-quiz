@@ -110,16 +110,22 @@ export function useExamSession(subjectName: string, count?: number) {
         .filter((i) => i !== -1);
       const selectedCorrect = selected.filter((i) => correctIndices.includes(i)).length;
       const selectedWrong = selected.filter((i) => wrongIndices.includes(i)).length;
+      const score =
+        answerMode === 'single'
+          ? selected.some((i) => question.answers[i]?.correct)
+            ? 1
+            : 0
+          : calculateQuestionScore(
+              correctIndices.length,
+              wrongIndices.length,
+              selectedCorrect,
+              selectedWrong,
+            );
 
       return {
         questionIndex: idx,
         selectedAnswers: selected,
-        score: calculateQuestionScore(
-          correctIndices.length,
-          wrongIndices.length,
-          selectedCorrect,
-          selectedWrong,
-        ),
+        score,
         maxScore: 1,
       };
     });
@@ -140,7 +146,7 @@ export function useExamSession(subjectName: string, count?: number) {
     setElapsedMs(timeElapsedMs);
     setResult(nextResult);
     return nextResult;
-  }, [answers, questionIndices, result, subject.questions]);
+  }, [answerMode, answers, questionIndices, result, subject.questions]);
 
   const questionData = useMemo(
     () =>
